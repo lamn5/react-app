@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import SignIn from './SignIn';
+import Home from './Home';
 
 function App() {
   const [signedIn, setSignedIn] = useState(false);
@@ -13,11 +14,9 @@ function App() {
           Welcome!
         </p>
         {!signedIn ? (
-          <SignIn />
+          <SignIn myNum={5} setSignedIn={setSignedIn} />
         ) : (
-          <p>
-            You're signed in!
-          </p>
+          <Home />
         )}
       
       </header>

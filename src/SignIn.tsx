@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-const SignIn = () => {
+type Props = {
+    myNum: number,
+    setSignedIn: (b: boolean) => void,
+}
+
+const SignIn = (props: Props) => {
+    const { myNum, setSignedIn } = props;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -12,8 +18,17 @@ const SignIn = () => {
         setPassword(event.target.value)
     }
 
+    const handleClick = () => {
+        if (username && password){
+            setSignedIn(true);
+        }
+    }
+
     return(
         <div>
+        <p>
+            {myNum}
+        </p>
         <p>
           Username:
         </p>
@@ -37,7 +52,7 @@ const SignIn = () => {
             {password}
         </p>
         <br />
-        <button>
+        <button onClick={handleClick}>
           Sign In
         </button>
         </div>
