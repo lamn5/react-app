@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-import SignIn from './SignIn';
-import Home from './Home';
+import AppRouter from './routes'
 
 function App() {
   const [signedIn, setSignedIn] = useState(false);
@@ -13,12 +12,7 @@ function App() {
         <p>
           Welcome!
         </p>
-        {!signedIn ? (
-          <SignIn myNum={5} setSignedIn={setSignedIn} />
-        ) : (
-          <Home />
-        )}
-      
+        <AppRouter />
       </header>
     </div>
   );

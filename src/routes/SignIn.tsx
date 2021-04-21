@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-type Props = {
-    myNum: number,
-    setSignedIn: (b: boolean) => void,
-}
+const SignIn = () => {
+    const history = useHistory();
 
-const SignIn = (props: Props) => {
-    const { myNum, setSignedIn } = props;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,15 +17,12 @@ const SignIn = (props: Props) => {
 
     const handleClick = () => {
         if (username && password){
-            setSignedIn(true);
+            history.push('/home');
         }
     }
 
     return(
         <div>
-        <p>
-            {myNum}
-        </p>
         <p>
           Username:
         </p>

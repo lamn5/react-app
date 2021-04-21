@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 
 type Hackit = {
     name: string,
@@ -30,14 +31,14 @@ const Home = () => {
         <div>
             {hackits.map((hackit) => {
                 return(
-                    <div>
+                    <Link to={`/h/${hackit.name}`}>
                         <h5>
                             {hackit.name}
                         </h5>
                         <p>
                             {hackit.description}
                         </p>
-                    </div>
+                    </Link>
                 )
             })}
 
