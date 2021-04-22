@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
 
 const SignIn = () => {
     const history = useHistory();
@@ -46,9 +47,12 @@ const SignIn = () => {
             {password}
         </p>
         <br />
-        <button onClick={handleClick}>
+        <Button onClick={handleClick}
+            variant="contained" 
+            color="primary"
+        >
           Sign In
-        </button>
+        </Button>
         </div>
     );
 }
