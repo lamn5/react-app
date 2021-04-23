@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 
+const api = 'https://dbao82bnii.execute-api.us-east-2.amazonaws.com/prod';
+const endpoint = '/signin';
+
 const SignIn = () => {
     const history = useHistory();
 
@@ -18,7 +21,24 @@ const SignIn = () => {
 
     const handleClick = () => {
         if (username && password){
-            history.push('/home');
+            const request = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                })
+            };
+
+            fetch(api + endpoint, request)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.signedIn) {
+                        history.push('/home');
+                    }
+                })
         }
     }
 

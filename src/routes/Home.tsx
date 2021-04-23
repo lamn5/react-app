@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 
+const api = 'https://dbao82bnii.execute-api.us-east-2.amazonaws.com/prod';
+const endpoint = '/createhackit';
 
 type Hackit = {
     name: string,
@@ -22,11 +24,27 @@ const Home = () => {
         setNewHackitDesc(event.target.value)
     }
 
-    const createHackit = () => {
-        setHackits((oldHackits) => [...oldHackits, {
-            name: newHackitName,
-            description: newHackitDesc
-        }])
+    const createHackit = (event: any) => {
+        if (newHackitName && newHackitDesc) {
+            const request = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: newHackitName,
+                    description: newHackitDesc,
+                })
+            };
+
+            fetch(api + endpoint, request)
+                .then(response => response.json())
+                .then(data => {
+                    setHackits(data.hackits);
+                })
+        }
+        setNewHackitDesc('');
+        setNewHackitName('');
     }
 
     return (
