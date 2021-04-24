@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 import './App.css';
 
 import AppRouter from './routes'
@@ -9,9 +10,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Welcome!
-        </p>
+      <Typography variant="h2">
+              Welcome!
+            </Typography>
         <AppRouter />
       </header>
     </div>

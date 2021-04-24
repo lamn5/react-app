@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+
+
+
 
 const api = 'https://dbao82bnii.execute-api.us-east-2.amazonaws.com/prod';
 const endpoint = '/signin';
@@ -44,6 +50,10 @@ const SignIn = () => {
 
     return(
         <div>
+
+
+
+        
         <p>
           Username:
         </p>
@@ -53,9 +63,6 @@ const SignIn = () => {
         onChange={changeUsername} 
         />
         <p>
-            {username}
-        </p>
-        <p>
           Password:
         </p>
         <input 
@@ -63,13 +70,11 @@ const SignIn = () => {
         value={password}
         onChange={changePassword}
         />
-        <p>
-            {password}
-        </p>
+        <br />
         <br />
         <Button onClick={handleClick}
-            variant="contained" 
-            color="primary"
+            variant= "contained"
+            color="secondary"
         >
           Sign In
         </Button>
